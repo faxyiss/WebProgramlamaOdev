@@ -1,0 +1,70 @@
+.team-section {
+    max-width: 1200px;
+    background-color: #F96E2A;
+    width: auto;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    border: 4PX solid #78B3CE;
+}
+
+.team-section h2 {
+    font-size: 2em;
+    color: #FBF8EF;
+    margin-bottom: 30px;
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.team-member {
+    width: 250px;
+    text-align: center;
+    padding: 15px;
+    background-color: #FBF8EF;
+    border: 2px solid #78B3CE;
+    border-radius: 10px;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.team-member h3 {
+    font-size: 1.2em;
+    color: #F96E2A;
+}
+
+.team-member p {
+    color: #333;
+    font-size: 1em;
+    margin: 5px 0;
+}
+
+.team-member:hover {
+    transition: transform 0.2s ease-in-out;
+    transform: translateY(-10px);  /* Yukarıya doğru kaydırma */
+}
+
+
+@media (max-width: 768px) {
+    .team-members {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-member {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}

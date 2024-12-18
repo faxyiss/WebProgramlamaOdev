@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style/style.css">
+    <link rel="stylesheet" href="Style/Siparis_css/Siparis_Sepeti.css">
+    <link rel="stylesheet" href="Style/Siparis_css/Adress.css">
+    <link rel="stylesheet" href="Style/Siparis_css/Fatura.css">
+    <title>Ana Sayfa</title>
+</head>
+<style>
+    
+    button {
+        padding: 12px 25px;
+        font-size: 18px;
+        background-color: #F96E2A;  
+        color: white;  
+        border: 2px solid #F96E2A;  
+        cursor: pointer;
+        border-radius: 10px;  
+        transition: all 0.1s ease-in-out; 
+        display: inline-block;  
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 8px; 
+    }
+
+    
+    button:hover {
+        background-color: #F96E2A;  
+        color: #FBF8EF;  
+        border-color: #FBF8EF;  
+        transform: translateY(-4px);  
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
+    }
+
+    
+    button:active {
+        transform: translateY(2px); 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    }
+
+    
+    .quantity-buttons button {
+        padding: 10px 15px;
+        margin: 0 5px;
+        font-size: 14px;
+        background-color: #78B3CE;  
+        color: white;  
+        border: none;
+        border-radius: 50%;  
+        transition: all 0.1s ease;
+    }
+
+   
+    .quantity-buttons button:hover {
+        background-color: #F96E2A;
+        color: white;  
+        transform: scale(1.2); 
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
+    }
+
+    
+    .quantity-buttons button:active {
+        transform: scale(0.95); 
+    }
+</style>
+<link rel="stylesheet" href="Style/Siparis_css/Odeme.css">
+<body>
+    <div class="wrapper">
+        <header>
+        
+        <div class="logo"><img src="Images/Logo.svg" alt="" style="width: 30px; height: 30px; color: white; margin-right: 10px;">Kırtasiye</div>
+        <nav>
+            <a href="Index.html">Ana Sayfa</a>
+            <a href="Urun_listesi.html">Ürün Listesi</a>
+            <a href="Kontak_Kur.html">İletişim</a>
+            <a href="Siparis.html">Sipariş</a>
+        </nav>
+        </header>
+        <main>       
+            <section class="order-section">
+                <h2>Siparişinizi Oluşturun</h2>
+                
+                <!-- Sipariş Tablosu -->
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>Ürün Adı</th>
+                            <th>Fiyat</th>
+                            <th>Miktar</th>
+                            <th>Toplam</th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody id="order-body">
+                        <!-- Ürünler buraya eklenecek -->
+                    </tbody>
+                </table>
+            
+                <!-- Sipariş Özeti -->
+                <div class="order-summary">
+                    <p><strong>Toplam Ücret:</strong> <span id="total-price">0</span> ₺</p>
+                    <p><strong>KDV (%18):</strong> <span id="vat">0</span> ₺</p>
+                    <p><strong>Genel Toplam:</strong> <span id="grand-total">0</span> ₺</p>
+                </div>
+            
+                
+                <div class="order-actions">
+                    <button onclick="addRandomProduct()">Ürün Ekle</button>
+                    <button onclick="clearOrder()">Siparişi Temizle</button>
+                </div>
+            </section>
+            <section class="address-entry">
+                <h2>Sipariş İçin Adres Bilgilerini Girin</h2>
+                <form id="address-form">
+                    <label for="first-name">Ad:</label>
+                    <input type="text" id="first-name" name="first-name" placeholder="Adınızı girin" required>
+            
+                    <label for="last-name">Soyad:</label>
+                    <input type="text" id="last-name" name="last-name" placeholder="Soyadınızı girin" required>
+            
+                    <label for="address">Adres:</label>
+                    <input type="text" id="address" name="address" placeholder="Adresinizi girin" required>
+            
+                    <label for="city">Şehir:</label>
+                    <input type="text" id="city" name="city" placeholder="Şehir" required>
+            
+                    <label for="postal-code">Posta Kodu:</label>
+                    <input type="text" id="postal-code" name="postal-code" placeholder="Posta kodunu girin" required>
+            
+                    <label for="phone">Telefon:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Telefon numaranızı girin" required>
+            
+                    <button type="submit">Adres Bilgilerini Kaydet</button>
+                </form>
+            </section>
+            <section class="invoice" id="invoice-body">
+                <h2>Fatura Bilgileri</h2>
+                
+                <div class="invoice-info">
+                    <h3>Adres Bilgileri</h3>
+                    <p><strong>Ad:</strong> <span id="name-display">Rastgele Müşteri</span></p>
+                    <p><strong>Adres:</strong> <span id="address-display">12345678</span></p>
+                    <p><strong>Şehir:</strong> <span id="city-display">Istanbul</span></p>
+                    <p><strong>Posta Kodu:</strong> <span id="postal-code-display">1234567890</span></p>
+                    <p><strong>Telefon:</strong> <span id="phone-display">+90 123 456 789</span></p>
+                </div>
+                
+                <div class="invoice-items">
+                    <h3>Sipariş Detayları</h3>
+                    <table id="invoice-items-table">
+                        <thead>
+                            <tr>
+                                <th>Ürün Adı</th>
+                                <th>Fiyat</th>
+                                <th>Adet</th>
+                                <th>Toplam</th>
+                            </tr>
+                        </thead>
+                        <tbody id="order-list">
+                            <!-- Dinamik olarak ürünler eklenecek -->
+                        </tbody>
+                    </table>
+                </div>
+            
+                <div class="invoice-summary">
+                    <p><strong>Toplam Tutar:</strong> <span id="total-amount">0₺</span></p>
+                    <p><strong>KDV (18%):</strong> <span id="vat-amount">0₺</span></p>
+                    <p><strong>Genel Toplam:</strong><span id="total">0₺</span></p>
+                </div>
+                <button onclick="generatePDF()">Faturayı PDF Olarak İndir</button>
+
+            </section>
+            <section id="payment-section">
+                <h2>Ödeme Bilgileri</h2>
+                <form id="payment-form">
+                    <div class="form-group">
+                        <label for="card-holder-name">Kart Sahibinin Adı</label>
+                        <input type="text" id="card-holder-name" name="card-holder-name" placeholder="Ad Soyad" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-number">Kart Numarası</label>
+                        <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="expiry-date">Son Kullanma Tarihi</label>
+                            <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" maxlength="5" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="3" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-button">Ödemeyi Tamamla</button>
+                </form>
+            </section>            
+        </main>
+        <footer>
+        <p>&copy; 2024 Kırtasiye. All Rights Reserved.</p>
+        </footer>
+        <script src="Scripts/Siparis.js"></script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+
+.address-entry {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px; 
+    width: 100%; 
+    margin: 20px auto;
+    max-width: 1400px;
+    box-sizing: border-box;
+    border: #F96E2A 4px solid;
+}
+
+
+.address-entry h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+form label {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+form input{
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    forced-color-adjust: #F96E2A;
+}
+form input[text]:focus-visible{
+    border:2px solid #F96E2A;    
+}
+
+form button {
+    width: auto;
+    padding: 12px;
+    border: #F96E2A 2px solid;
+    background-color: #F96E2A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .address-entry {
+        padding: 15px;
+    }
+    form input {
+        padding: 10px;
+    }
+    form button {
+        padding: 10px;
+        font-size: 1em;
+    }
+}
